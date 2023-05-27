@@ -13,12 +13,21 @@ public class Date {
         this.day = d;
         this.month = m;
         this.year = y;
+
+        // Input validation
+        if (this.day < 1 || this.day > 31) {
+            this.day = 1;
+        } else if (this.month < 1 || this.month > 12) {
+            this.month = 1;
+        } else if (this.year < -3999 || this.year > 3999) {
+            this.year = 0;
+        }
     }
 
     public Date() {
         this.day = 1;
         this.month = 1;
-        this.year = 2000;
+        this.year = 0;
     }
 
     /**
@@ -73,6 +82,7 @@ public class Date {
      */
     @Override
     public int hashCode() {
+        // TODO: Is negative hashcode allowed? If not, we can add 3999 to the hashcode
         if (this.year < 0) {
             return -1 * (this.day + this.month - this.year);
         } else {
