@@ -21,8 +21,38 @@ public class Date {
         this.year = 2000;
     }
 
+    /**
+     * @return a date string in the format DD/MM/YYYY
+     */
     public String toString() {
-        return this.day + "/" + this.month + "/" + this.year;
+        String dayString, monthString, yearString;
+
+        // add a leading zero if the day or month is less than 10
+        if (this.day < 10) {
+            dayString = "0" + this.day;
+        } else {
+            dayString = "" + this.day;
+        }
+
+        // add a leading zero if the month is less than 10
+        if (this.month < 10) {
+            monthString = "0" + this.month;
+        } else {
+            monthString = "" + this.month;
+        }
+
+        // add leading zeros if the year is less than 1000
+        // TODO: What about negative years?
+        if (this.year < 10) {
+            yearString = "000" + this.year;
+        } else if (this.year < 100) {
+            yearString = "00" + this.year;
+        } else if (this.year < 1000) {
+            yearString = "0" + this.year;
+        } else {
+            yearString = "" + this.year;
+        }
+        return dayString + "/" + monthString + "/" + yearString;
     }
 
     /**
@@ -43,6 +73,10 @@ public class Date {
      */
     @Override
     public int hashCode() {
-        return this.day + this.month + this.year;
+        if (this.year < 0) {
+            return -1 * (this.day + this.month - this.year);
+        } else {
+            return this.day + this.month + this.year;
+        }
     }
 }
