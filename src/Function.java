@@ -1,14 +1,13 @@
 /* This class represents a mathematical function */
-public class Function{
+public abstract class Function{
 
-    /**
-     * receives a point (a real number) and returns the value of the function at that point
-     * @param point
-     * @return the result
-     */
-    public double valueAt(int point){
-        return pass;
+    public abstract double valueAt(double point);
+    public abstract String toString();
+    public abstract Function derivative();
+    public abstract double bisectionMethod(int a, int b, double epsilon);
+    public abstract double bisectionMethod(int a, int b);
+    public abstract double newtonRaphsonMethod(int a, double epsilon);
+    public abstract double newtonRaphsonMethod(int a);
+    public abstract String taylorPolynomial(int n);
 
-    }
 }
-//TODO: suggest to finish with the other and then going into here

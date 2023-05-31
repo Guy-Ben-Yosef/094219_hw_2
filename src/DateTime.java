@@ -7,6 +7,25 @@ public class DateTime extends Date {
     int minute;
     int hour;
 
+    public void setDay(int day){this.day = day;}
+    public void setMonth(int month){this.month = month;}
+    public void setYear(int year){this.year = year;}
+
+    public void setMinute(int minute) {
+        if (this.minute < 0 || this.minute > 59) {
+            this.minute = 0;
+        }else{
+            this.minute = minute;
+        }
+    }
+
+    public void setHour(int hour) {
+            if (this.hour < 0 || this.hour > 23) {
+                this.hour = hour;
+            } else {
+                this.hour = 0;
+            }
+        }
     /**
      * @param d   day
      * @param m   month
@@ -14,15 +33,17 @@ public class DateTime extends Date {
      * @param min minute
      * @param h   hour
      */
-    public DateTime(int d, int m, int y, int h, int min) {
-        super(d, m, y);  // call the constructor of the superclass
+    public DateTime(int y, int m, int d, int h, int min) {
+        super(y, m, d);  // call the constructor of the superclass
         this.minute = min;
         this.hour = h;
 
         // Input validation
         if (this.minute < 0 || this.minute > 59) {
             this.minute = 0;
-        } else if (this.hour < 0 || this.hour > 23) {
+        }
+
+        if (this.hour < 0 || this.hour > 23) {
             this.hour = 0;
         }
     }
@@ -57,7 +78,7 @@ public class DateTime extends Date {
     public boolean equals(Object o) {
         if (o instanceof DateTime) {
             DateTime other = (DateTime) o;
-            return super.equals(other) && this.hour == other.hour && this.minute == other.minute;
+            return (this.hashCode() == o.hashCode());
         } else {
             return false;
         }
@@ -69,9 +90,9 @@ public class DateTime extends Date {
     @Override
     public int hashCode() {
         if (this.year < 0) {
-            return super.hashCode() - (this.hour + this.minute);
+            return super.hashCode() - (this.hour  + this.minute) -2 ;//Added and reduced 2 for .super hasCode.
         } else {
-            return super.hashCode() + (this.hour + this.minute);
+            return super.hashCode() + (this.hour + this.minute) + 2;
         }
     }
 }

@@ -9,7 +9,7 @@ public class Date {
      * @param m month
      * @param y year
      */
-    public Date(int d, int m, int y) {
+    public Date(int y, int m, int d) {
         this.day = d;
         this.month = m;
         this.year = y;
@@ -72,7 +72,7 @@ public class Date {
     public boolean equals(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;  // cast the object to a Date
-            return this.day == d.day && this.month == d.month && this.year == d.year;
+            return (this.hashCode() == o.hashCode());
         }
         return false;
     }
@@ -83,6 +83,7 @@ public class Date {
     @Override
     public int hashCode() {
         // TODO: Is negative hashcode allowed? If not, we can add 3999 to the hashcode
+        //  NOAM:I THINKS ALLOWD
         if (this.year < 0) {
             return -1 * (this.day + this.month - this.year);
         } else {

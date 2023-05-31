@@ -1,14 +1,15 @@
 /* This class represents a Polynomial function */
 public class Polynomial{
     private double[] coefficients;
-    String expression;
+    private String[] expression;
 
     /**
      * Constructor for Polynomial
-     * @param varargs of coefficients
+     * @param coefficients
      */
     public Polynomial(double... coefficients) {
         this.coefficients = coefficients;
+        this.expression = new String[coefficients.length];
     }
 
     /**
@@ -23,20 +24,23 @@ public class Polynomial{
                 continue;
             }
 
-            //TODO: need to figure the -1,1
-
-            this.expression.append(this.coefficients[i]);
-            this.expression.append('x');
-
-            if (i == 1){
-                continue;
+            // adding the number if not 1/-1
+            if(this.coefficients[i] != 1 || this.coefficients[i] != -1){
+                this.expression[i] += (this.coefficients[i]);
             }
-            
-            this.expression.append('^' + i);
+
+            this.expression[i] +=  ('x');
+            this.expression[i] += ('^' + i);
+
+            this.expression[i] +=  ('x');
+
+            if (i != 1){
+                this.expression[i] += ('^' + i);
+            }
 
         }
 
-        return this.expression;
+        return String.join(" ", this.expression);
     }
 
 
