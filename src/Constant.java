@@ -24,29 +24,4 @@ public class Constant extends Function{
     public Function derivative() {
         return new Constant(0);
     }
-
-    @Override
-    public double bisectionMethod(double a, double b, double epsilon) {
-        return 0;
-    }
-
-    @Override
-    public double bisectionMethod(double a, double b) {
-        return 0;
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a, double epsilon) {
-        return 0;
-    }
-
-    @Override
-    public double newtonRaphsonMethod(double a) {
-        return 0;
-    }
-
-    @Override
-    public String taylorPolynomial(int n) {
-        return null;
-    }
 }
