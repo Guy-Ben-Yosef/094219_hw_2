@@ -26,22 +26,22 @@ public class Constant extends Function{
     }
 
     @Override
-    public double bisectionMethod(int a, int b, double epsilon) {
+    public double bisectionMethod(double a, double b, double epsilon) {
         return 0;
     }
 
     @Override
-    public double bisectionMethod(int a, int b) {
+    public double bisectionMethod(double a, double b) {
         return 0;
     }
 
     @Override
-    public double newtonRaphsonMethod(int a, double epsilon) {
+    public double newtonRaphsonMethod(double a, double epsilon) {
         return 0;
     }
 
     @Override
-    public double newtonRaphsonMethod(int a) {
+    public double newtonRaphsonMethod(double a) {
         return 0;
     }
 
