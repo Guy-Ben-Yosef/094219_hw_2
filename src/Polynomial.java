@@ -20,9 +20,9 @@ public class Polynomial{
         StringBuilder resultString = new StringBuilder();
         double freeCoefficient = coefficients[0];
         if (freeCoefficient % 1 == 0) {
-            resultString.append((int) Helper.abs(freeCoefficient));
+            resultString.append((int) Math.abs(freeCoefficient));
         } else {
-            resultString.append(Helper.abs(freeCoefficient));
+            resultString.append(Math.abs(freeCoefficient));
         }
         for (int i = 1; i < coefficients.length; i++) {
             double coefficient = coefficients[i];
@@ -36,9 +36,9 @@ public class Polynomial{
             }
             if (coefficient != 1 && coefficient != -1) {
                 if (coefficient % 1 == 0) {
-                    resultString.append((int) Helper.abs(coefficient));
+                    resultString.append((int) Math.abs(coefficient));
                 } else {
-                    resultString.append(Helper.abs(coefficient));
+                    resultString.append(Math.abs(coefficient));
                 }
             }
             String xToThePowerOf = "x^" + Integer.toString(i);
