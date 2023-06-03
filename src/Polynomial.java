@@ -15,8 +15,15 @@ public class Polynomial{
      */
     @Override
     public String toString(){
+        // TODO: add comments and docstring
+        // TODO: test
         StringBuilder resultString = new StringBuilder();
-        // TODO: implement x^0
+        double freeCoefficient = coefficients[0];
+        if (freeCoefficient % 1 == 0) {
+            resultString.append((int) Helper.abs(freeCoefficient));
+        } else {
+            resultString.append(Helper.abs(freeCoefficient));
+        }
         for (int i = 1; i < coefficients.length; i++) {
             double coefficient = coefficients[i];
             if (coefficient == 0) {
@@ -34,7 +41,8 @@ public class Polynomial{
                     resultString.append(Helper.abs(coefficient));
                 }
             }
-            resultString.append("x^" + Integer.toString(i));
+            String xToThePowerOf = "x^" + Integer.toString(i);
+            resultString.append(xToThePowerOf);
         }
         return resultString.toString();
     }
