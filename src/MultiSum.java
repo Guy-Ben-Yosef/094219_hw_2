@@ -18,7 +18,7 @@ public class MultiSum extends Function{
      */
     @Override
     public double valueAt(double point) {
-        double value = 0;  // Variable to store the computed value of the polynomial
+        double value = 0;  // Variable to store the computed value of the sum
         for (Function function : functions) {  // Iterate over the functions in the chain
             value += function.valueAt(point);  // Add the contribution of the i-th term to the value
         }
@@ -26,7 +26,7 @@ public class MultiSum extends Function{
     }
 
     /**
-     * @return The derivative of the sum of the functions in the chain
+     * @return A string representation of the sum of the functions in the chain
      */
     @Override
     public String toString() {
