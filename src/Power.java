@@ -26,7 +26,7 @@ public class Power extends Function{
      */
     @Override
     public String toString() {
-        return "(" + f.toString() + ")^" + n;
+        return "(" + f.toString() + "^" + n + ")";
     }
 
     /**
