@@ -22,14 +22,20 @@ public class Constant extends Function{
      */
     @Override
     public String toString() {
-        return String.valueOf(f);
-    }  // TODO: should it return "7.0" or "7"?
+        String constantAsString;
+        if (f%1 == 0) {
+            constantAsString = Integer.toString((int) f);
+        } else {
+            constantAsString = Double.toString(f);
+        }
+        return "(" + constantAsString + ")";
+    }
 
     /**
      * @return the derivative of the constant which is always zero
      */
     @Override
-    public Function derivative() {
+    public Constant derivative() {
         return new Constant(0);
     }
 }

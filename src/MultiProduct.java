@@ -34,7 +34,7 @@ public class MultiProduct extends Function {
         StringBuilder resultString = new StringBuilder();  // StringBuilder to construct the result string
         for (Function function : functions) {  // Iterate over the functions in the chain
             resultString.append(function.toString());  // Append the string representation of the i-th function
-            resultString.append("*");  // Append multiplication sign
+            resultString.append(" * ");  // Append multiplication sign
         }
         resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign
         return "(" + resultString.toString() + ")";
