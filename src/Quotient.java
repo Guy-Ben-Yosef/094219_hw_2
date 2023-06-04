@@ -27,7 +27,7 @@ public class Quotient extends Function {
      */
     @Override
     public String toString() {
-        return "(" + numerator.toString() + ")/(" + denominator.toString() + ")";
+        return "(" + numerator.toString() + " / " + denominator.toString() + ")";
     }
 
     /**

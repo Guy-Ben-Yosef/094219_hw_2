@@ -47,9 +47,9 @@ public class Polynomial extends Function{
                 continue;
             }
             if (coefficient > 0) {
-                resultString.append("+");  // Append plus sign for positive coefficients
+                resultString.append(" + ");  // Append plus sign for positive coefficients
             } else {
-                resultString.append("-");  // Append minus sign for negative coefficients
+                resultString.append(" - ");  // Append minus sign for negative coefficients
             }
 
             // Append the absolute value of the coefficient if it is not 1 or -1
@@ -63,7 +63,7 @@ public class Polynomial extends Function{
             String xToThePowerOf = "x^" + Integer.toString(i);  // Term with the variable and exponent
             resultString.append(xToThePowerOf);  // Append the term to the result string
         }
-        return resultString.toString();
+        return "(" + resultString.toString() + ")";
     }
 
     /**
