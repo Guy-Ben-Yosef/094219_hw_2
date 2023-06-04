@@ -1,4 +1,4 @@
-/* This class represents a function of type sum*/
+/* This class represents a summation of two functions */
 public class Sum extends Function {
     Function f1;
     Function f2;
@@ -23,7 +23,7 @@ public class Sum extends Function {
     }
 
     /**
-     * @return A string representation of the sum of the two functions
+     * @return a string representation of the sum of the two functions
      */
     @Override
     public String toString() {
