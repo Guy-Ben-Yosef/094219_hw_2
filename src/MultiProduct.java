@@ -36,7 +36,9 @@ public class MultiProduct extends Function {
             resultString.append(function.toString());  // Append the string representation of the i-th function
             resultString.append(" * ");  // Append multiplication sign
         }
-        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign
+        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign TODO: in rules??
+        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign TODO: in rules??
+        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign TODO: in rules??
         return "(" + resultString.toString() + ")";
     }
 

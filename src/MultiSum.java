@@ -36,6 +36,8 @@ public class MultiSum extends Function{
             resultString.append(" + ");  // Append plus sign
         }
         resultString.deleteCharAt(resultString.length() - 1);  // Remove the last plus sign TODO: in rules??
+        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last plus sign TODO: in rules??
+        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last plus sign TODO: in rules??
         return "(" + resultString.toString() + ")";
     }
 
