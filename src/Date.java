@@ -82,12 +82,12 @@ public class Date {
      */
     @Override
     public int hashCode() {
-        // TODO: Is negative hashcode allowed? If not, we can add 3999 to the hashcode
-        //  NOAM:I THINKS ALLOWD
+        int MONTH = 31;
+        int YEAR = 12*MONTH;
         if (this.year < 0) {
-            return -1 * (this.day + this.month - this.year);
+            return -1 * (this.day + this.month*MONTH - this.year*YEAR);
         } else {
-            return this.day + this.month + this.year;
+            return this.day + this.month*MONTH + this.year*YEAR;
         }
     }
 }
