@@ -77,7 +77,6 @@ public class DateTime extends Date {
     @Override
     public boolean equals(Object o) {
         if (o instanceof DateTime) {
-            DateTime other = (DateTime) o;
             return (this.hashCode() == o.hashCode());
         } else {
             return false;
@@ -89,10 +88,15 @@ public class DateTime extends Date {
      */
     @Override
     public int hashCode() {
+        int HOUR = 60;
+        int DAY = 24*HOUR;
+
         if (this.year < 0) {
-            return super.hashCode() - (this.hour  + this.minute) -2 ;//Added and reduced 2 for .super hasCode.
+//            return super.hashCode() - (this.hour  + this.minute) -2 ;//Added and reduced 2 for .super hasCode.
+            return super.hashCode()*DAY - (this.hour*HOUR  + this.minute);
         } else {
-            return super.hashCode() + (this.hour + this.minute) + 2;
+//            return super.hashCode() + (this.hour + this.minute) + 2;
+            return super.hashCode()*DAY + (this.hour*HOUR  + this.minute);
         }
     }
 }

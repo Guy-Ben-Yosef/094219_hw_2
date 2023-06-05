@@ -33,7 +33,12 @@ public class Power extends Function{
      * @return the derivative of the power of the function
      */
     public Function derivative() {
-        Function g = new Power(f, n - 1);
-        return new MultiProduct(new Constant(n), g, f.derivative());
+        if (n >= 2) {
+            Function g = new Power(f, n - 1);
+            return new MultiProduct(new Constant(n), g, f.derivative());
+        } else {
+            return f.derivative();
+        }
+
     }
 }

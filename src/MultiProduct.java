@@ -1,6 +1,4 @@
 /* This class represents a chain of `Product` objects */
-// TODO: Maybe this class should be an extension of `Product`?
-// TODO: Note that I didn't use `Product` class at all in this class, is it making sense?
 public class MultiProduct extends Function {
     private final Function[] functions;
 
@@ -8,7 +6,7 @@ public class MultiProduct extends Function {
      * Constructor for MultiProduct
      * @param functions an array of Function inputs
      */
-    public MultiProduct(Function... functions){
+    public MultiProduct(Function... functions){  // TODO: Will it throw compile error for `functions` with length 1?
         this.functions = functions;
     }
 
@@ -51,13 +49,13 @@ public class MultiProduct extends Function {
         // Array to store the derivatives of the individual functions in the chain:
         Function[] derivatives = new Function[functions.length];  // Compute the derivative of the i-th function
         for (int i = 0; i < functions.length; i++) {  // Array to store the multiplied functions
-            Function ithFunctionPrime = functions[i].derivative();
             Function[] iMultipliedFunctions = new Function[functions.length];
+            iMultipliedFunctions[0] = functions[i].derivative();  // Compute the derivative of the i-th function
+            int counter = 1;
             for (int j = 0; j < functions.length; j++) {
                 if (j != i) {
-                    iMultipliedFunctions[j] = functions[j];  // Assign the j-th function as it is
-                } else {
-                    iMultipliedFunctions[j] = ithFunctionPrime;  // Assign the derivative of the i-th function
+                    iMultipliedFunctions[counter] = functions[j];  // Assign the j-th function as it is
+                    counter++;
                 }
             }
             // Create a MultiProduct object with the multiplied functions:

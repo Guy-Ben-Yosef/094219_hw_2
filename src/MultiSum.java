@@ -1,6 +1,4 @@
 /* This class represents a chain of `Sum` objects */
-// TODO: Maybe this class should be an extension of `Sum`?
-// TODO: Note that I didn't use `Sum` class at all in this class, is it making sense?
 public class MultiSum extends Function{
     private final Function[] functions;
 
@@ -8,7 +6,7 @@ public class MultiSum extends Function{
      * Constructor for MultiSum
      * @param functions an array of Function inputs
      */
-    public MultiSum(Function... functions){
+    public MultiSum(Function... functions){  // TODO: Will it throw compile error for `functions` with length 1?
         this.functions = functions;
     }
 

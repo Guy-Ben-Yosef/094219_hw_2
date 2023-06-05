@@ -36,7 +36,7 @@ public class Quotient extends Function {
     @Override
     public Quotient derivative() {
         Function fPrimeTimesG = new Product(numerator.derivative(), denominator);  // f' * g
-        Function gPrimeTimesF = new Product(numerator, denominator.derivative());  // g' * f
+        Function gPrimeTimesF = new Product(denominator.derivative(), numerator);  // g' * f
         Function newNumerator = new Difference(fPrimeTimesG, gPrimeTimesF);  // f' * g - g' * f
         Function newDenominator = new Power(denominator, 2);  // g^2
         return new Quotient(newNumerator, newDenominator);  // (f' * g - g' * f) / g^2
