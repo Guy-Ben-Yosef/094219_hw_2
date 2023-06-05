@@ -4,7 +4,7 @@ public class Polynomial extends Function{
 
     /**
      * Constructor for Polynomial
-     * @param coefficients
+     * @param coefficients The coefficients of the polynomial function.
      */
     public Polynomial(double... coefficients) {
         this.coefficients = coefficients;
@@ -84,12 +84,12 @@ public class Polynomial extends Function{
             if (i == 1) {
                 xToThePowerOf = "x";
             } else {
-                xToThePowerOf = "x^" + Integer.toString(i);  // Term with the variable and exponent
+                xToThePowerOf = "x^" + i;  // Term with the variable and exponent
             }
             resultString.append(xToThePowerOf);  // Append the term to the result string
             firstTermAppended = true;
         }
-        return "(" + resultString.toString() + ")";
+        return "(" + resultString + ")";
     }
 
     /**

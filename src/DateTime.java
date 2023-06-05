@@ -77,7 +77,6 @@ public class DateTime extends Date {
     @Override
     public boolean equals(Object o) {
         if (o instanceof DateTime) {
-            DateTime other = (DateTime) o;
             return (this.hashCode() == o.hashCode());
         } else {
             return false;

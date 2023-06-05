@@ -1,4 +1,5 @@
 /* This class represents a date in the Gregorian calendar */
+// TODO: Test with edge cases
 public class Date {
     int day;
     int month;
@@ -72,6 +73,9 @@ public class Date {
     public boolean equals(Object o) {
         if (o instanceof Date) {
             Date d = (Date) o;  // cast the object to a Date
+            // TODO: 1. We never used the casted object d
+            // TODO: 2. I think `instanceof` is not a good way to check if an object is of a certain type because it
+            //          will return true if the object is a subclass of the type
             return (this.hashCode() == o.hashCode());
         }
         return false;
