@@ -35,6 +35,18 @@ public class Polynomial extends Function{
         if (coefficients.length == 0) {  // For empty polynomials, return a polynomial of degree 0
             return new Constant(0).toString();
         }
+        // For polynomials with all zero coefficients, return a polynomial of degree 0
+        boolean allZero = true;
+        for (double coefficient : coefficients) {
+            if (coefficient != 0) {
+                allZero = false;
+                break;
+            }
+        }
+        if (allZero) {
+            return new Constant(0).toString();
+        }
+
         StringBuilder resultString = new StringBuilder();  // StringBuilder to construct the result string
         double freeCoefficient = coefficients[0];  // Coefficient of the free term
         boolean firstTermAppended = false;  // Boolean to determine if the first coefficient has been appended
