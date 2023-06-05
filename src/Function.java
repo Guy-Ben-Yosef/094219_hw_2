@@ -16,21 +16,19 @@ public abstract class Function{
     public double bisectionMethod(double a, double b, double epsilon) {
         double left = a;   // Left endpoint of the interval
         double right = b;  // Right endpoint of the interval
-        double middle;     // Midpoint of the interval
-        do {
+        double middle = (left + right) / 2;     // Midpoint of the interval
+        while (right - left > epsilon)  {  // Repeat until desired precision is reached
             middle = (left + right) / 2;           // Calculate the midpoint
             double valAtLeft = valueAt(left);      // Evaluate the function at the left endpoint
             double valAtMiddle = valueAt(middle);  // ...
 
-            if (valAtMiddle == 0) {  // Check if the midpoint is a root
-                break;
-            } else if (valAtLeft * valAtMiddle < 0) {  // Check if the root is in the left sub-interval
-                right = middle;  // Adjust the interval to the left sub-interval
+            if (valAtLeft * valAtMiddle > 0) {  // Check if the root is in the left sub-interval
+                left = middle;  // Adjust the interval to the left sub-interval
             } else {  // Root is in the right sub-interval
-                left = middle;  // Adjust the interval to the right sub-interval
+                right = middle;  // Adjust the interval to the right sub-interval
             }
-        } while (Math.abs(right - left) > epsilon);  // Repeat until desired precision is reached
-        return middle;  // Return the approximate root
+        }
+        return (left + right) / 2;  // Return the approximate root
     }
 
     /**
@@ -50,15 +48,13 @@ public abstract class Function{
      */
     public double newtonRaphsonMethod(double a, double epsilon) {
         double x = a;  // Initial guess for the root
-        double deltaX;  // Change in x (update for the root approximation)
+        double fPrime;
+        Function prime = derivative();  // Derivative of the function
 
-        do {
-            double f = valueAt(x);  // Evaluate the function at x
-            double fPrime = this.derivative().valueAt(x);  // Evaluate the derivative of the function at x
-
-            deltaX = f / fPrime;  // Compute the update for x
-            x -= deltaX;  // Update x with the new approximation
-        } while(Math.abs(deltaX) > epsilon);  // Repeat until desired precision is reached
+        while (Math.abs(valueAt(x)) >= epsilon) {  // Repeat until desired precision is reached
+            fPrime = prime.valueAt(x);  // Evaluate the derivative of the function at x
+            x -= valueAt(x) / fPrime;  // Update x with the new approximation
+        }
 
         return x;
     }
@@ -82,8 +78,7 @@ public abstract class Function{
         coefficients[0] = this.valueAt(0);  // Coefficient of the constant term in the Taylor polynomial
 
         Function kthDerivative = this.derivative();  // Derivative of the function
-        for
-        (int k = 1; k <= n; k++) {
+        for (int k = 1; k <= n; k++) {
             kthDerivativeAtZero = kthDerivative.valueAt(0);  // Compute the value of the k-th derivative at zero
             coefficients[k] = kthDerivativeAtZero / Helper.factorial(k);  // Compute the coefficient of the k-th term
 
