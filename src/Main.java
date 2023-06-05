@@ -4,7 +4,7 @@ public class Main {
     private static Random rnd;
 
     public static void main(String[] args) {
-//        testPartA();
+        testPartA();
         testPartB();
     }
 
