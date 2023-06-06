@@ -1,6 +1,6 @@
 /* This class represents a negative of a function */
 public class Negation extends Function{
-    Function f;  // TODO: private final?
+    final Function f;
 
     public Negation(Function f) { this.f = f; }
 

@@ -14,4 +14,19 @@ public class Helper {
 
         return result;
     }
+
+    /**
+     * Removes first two arguments.
+     * @param functions Functions list.
+     * @return Functions list without the first two.
+     */
+    public static Function[] removeFirstTwo(Function[] functions) {
+        Function[] result = new Function[functions.length - 2];
+
+        for (int i = 2; i < functions.length; i++){
+            result[i-2] = functions[i];
+        }
+
+        return result;
+    }
 }
