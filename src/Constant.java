@@ -1,6 +1,6 @@
 /* This class represents a Constant number function */
 public class Constant extends Function{
-    protected double f;  // TODO: protected or final?
+    final double f;
 
     /**
      * Constructor for Constant

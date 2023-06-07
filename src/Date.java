@@ -1,5 +1,4 @@
 /* This class represents a date in the Gregorian calendar */
-// TODO: Test with edge cases
 public class Date {
     int day;
     int month;
@@ -52,17 +51,22 @@ public class Date {
         }
 
         // add leading zeros if the year is less than 1000
-        // TODO: What about negative years?
-        if (this.year < 10) {
-            yearString = "000" + this.year;
-        } else if (this.year < 100) {
-            yearString = "00" + this.year;
-        } else if (this.year < 1000) {
-            yearString = "0" + this.year;
+        if (Math.abs(this.year) < 10) {
+            yearString = "000" + Math.abs(this.year);
+        } else if (Math.abs(this.year) < 100) {
+            yearString = "00" + Math.abs(this.year);
+        } else if (Math.abs(this.year) < 1000) {
+            yearString = "0" + Math.abs(this.year);
         } else {
-            yearString = "" + this.year;
+            yearString = "" + Math.abs(this.year);
         }
+        if (this.year < 0){
+            return dayString + "/" + monthString + "/" + "-" + yearString;
+        }
+
         return dayString + "/" + monthString + "/" + yearString;
+
+
     }
 
     /**

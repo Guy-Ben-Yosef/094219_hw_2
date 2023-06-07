@@ -6,8 +6,15 @@ public class MultiProduct extends Function {
      * Constructor for MultiProduct
      * @param functions an array of Function inputs
      */
-    public MultiProduct(Function... functions){  // TODO: Will it throw compile error for `functions` with length 1?
-        this.functions = functions;
+    public MultiProduct(Function function1, Function function2, Function... functions){
+        this.functions = new Function[2 + functions.length]; // total length
+
+        this.functions[0] = function1;
+        this.functions[1] = function2;
+
+        for(int i = 0; i < functions.length; i++){ // loop all over the varargs
+            this.functions[2 + i] = functions[i];
+        }
     }
 
     /**
@@ -59,8 +66,8 @@ public class MultiProduct extends Function {
                 }
             }
             // Create a MultiProduct object with the multiplied functions:
-            derivatives[i] = new MultiProduct(iMultipliedFunctions);
+            derivatives[i] = new MultiProduct(iMultipliedFunctions[0], iMultipliedFunctions[1], Helper.removeFirstTwo(iMultipliedFunctions));
         }
-        return new MultiSum(derivatives);  // Create a new MultiSum object with the derivative functions and return it
+        return new MultiSum(derivatives[0],derivatives[1], Helper.removeFirstTwo(derivatives));  // Create a new MultiSum object with the derivative functions and return it
     }
 }
