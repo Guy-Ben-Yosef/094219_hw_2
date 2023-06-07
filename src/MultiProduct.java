@@ -37,14 +37,14 @@ public class MultiProduct extends Function {
     @Override
     public String toString() {
         StringBuilder resultString = new StringBuilder();  // StringBuilder to construct the result string
-        for (Function function : functions) {  // Iterate over the functions in the chain
-            resultString.append(function.toString());  // Append the string representation of the i-th function
+        for (int i = 0; i < functions.length; i++) {  // Iterate over the functions in the chain
+            resultString.append(functions[i].toString());  // Append the string representation of the i-th function
+
+            if (i == functions.length - 1){break;} // Skipping the last multiplication sign and spaces: " * "
             resultString.append(" * ");  // Append multiplication sign
         }
-        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign TODO: in rules??
-        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign TODO: in rules??
-        resultString.deleteCharAt(resultString.length() - 1);  // Remove the last multiplication sign TODO: in rules??
-        return "(" + resultString.toString() + ")";
+
+        return "(" + resultString + ")";
     }
 
     /**
