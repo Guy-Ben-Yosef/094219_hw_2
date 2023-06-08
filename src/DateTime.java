@@ -7,25 +7,6 @@ public class DateTime extends Date {
     int minute;
     int hour;
 
-    public void setDay(int day){this.day = day;}
-    public void setMonth(int month){this.month = month;}
-    public void setYear(int year){this.year = year;}
-
-    public void setMinute(int minute) {
-        if (this.minute < 0 || this.minute > 59) {
-            this.minute = 0;
-        }else{
-            this.minute = minute;
-        }
-    }
-
-    public void setHour(int hour) {
-            if (this.hour < 0 || this.hour > 23) {
-                this.hour = hour;
-            } else {
-                this.hour = 0;
-            }
-        }
     /**
      * @param d   day
      * @param m   month
@@ -44,6 +25,26 @@ public class DateTime extends Date {
         }
 
         if (this.hour < 0 || this.hour > 23) {
+            this.hour = 0;
+        }
+    }
+
+    public void setDay(int day){this.day = day;}
+    public void setMonth(int month){this.month = month;}
+    public void setYear(int year){this.year = year;}
+
+    public void setMinute(int minute) {
+        if (this.minute < 0 || this.minute > 59) {
+            this.minute = 0;
+        }else{
+            this.minute = minute;
+        }
+    }
+
+    public void setHour(int hour) {
+        if (this.hour < 0 || this.hour > 23) {
+            this.hour = hour;
+        } else {
             this.hour = 0;
         }
     }
@@ -88,15 +89,16 @@ public class DateTime extends Date {
      */
     @Override
     public int hashCode() {
-        int HOUR = 60;
-        int DAY = 24*HOUR;
+        int minutesInHour = 60;
+        int hoursInDay = 24;
 
-        if (this.year < 0) {
-//            return super.hashCode() - (this.hour  + this.minute) -2 ;//Added and reduced 2 for .super hasCode.
-            return super.hashCode()*DAY - (this.hour*HOUR  + this.minute);
+        // The hashcode of a DateTime is the hashcode of the Date plus the hashcode of the time
+        int code = this.minute + this.hour*minutesInHour + Math.abs(super.hashCode())*hoursInDay*minutesInHour;
+
+        if (year < 0) {  // if the year is negative, make the hashcode negative
+            return -code;
         } else {
-//            return super.hashCode() + (this.hour + this.minute) + 2;
-            return super.hashCode()*DAY + (this.hour*HOUR  + this.minute);
+            return code;
         }
     }
 }
