@@ -75,14 +75,13 @@ public class Date {
      */
     @Override
     public boolean equals(Object o) {
+        if (this == o) { return true; }
         if (o instanceof Date) {
-            Date d = (Date) o;  // cast the object to a Date
-            // TODO: 1. We never used the casted object d
-            // TODO: 2. I think `instanceof` is not a good way to check if an object is of a certain type because it
-            //          will return true if the object is a subclass of the type
-            return (this.hashCode() == o.hashCode());
-        }
-        return false;
+            Date d = (Date) o;
+            if (d.hashCode() != o.hashCode()) { return false;}
+        } else { return false; }
+
+        return (this.hashCode() == o.hashCode());
     }
 
     /**
