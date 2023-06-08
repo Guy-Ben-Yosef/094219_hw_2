@@ -89,12 +89,15 @@ public class Date {
      */
     @Override
     public int hashCode() {
-        int MONTH = 31;
-        int YEAR = 12*MONTH;
-        if (this.year < 0) {
-            return -1 * (this.day + this.month*MONTH - this.year*YEAR);
+        int daysInMonth = 31;
+        int monthsInYear = 12;
+
+        // The hashcode of a Date is the day plus the month plus the year in days
+        int code = this.day + (this.month - 1) * daysInMonth + Math.abs(this.year) * daysInMonth * monthsInYear;
+        if (year < 0) {  // if the year is negative, make the hashcode negative
+            return -code;
         } else {
-            return this.day + this.month*MONTH + this.year*YEAR;
+            return code;
         }
     }
 }
